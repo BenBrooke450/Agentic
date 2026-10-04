@@ -8,8 +8,8 @@ from ingestion import retriever
 def retrieve(state: GraphState) -> Dict[str, Any]:
 
     print("---RETRIEVE STATE---")
-    question  = state["question"]
+    question = state["question"]
 
-    documents = retrieve.invoke(question)
+    documents = retriever.invoke(question)
 
     return {"documents": documents, "question": question}

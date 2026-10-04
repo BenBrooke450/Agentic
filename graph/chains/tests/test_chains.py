@@ -14,3 +14,13 @@ def test_retrieval_grade_answer_yes():
 
     assert res.binary_score == "yes"
 
+
+
+def test_retrieval_grade_answer_no():
+    question = "agent memory"
+    docs = retriever.invoke(question)
+    doc_txt = docs[1].page_content
+
+    res: GradeDocuments = retrieval_grader.invoke({"document":doc_txt,"question": "How to make pizza"})
+
+    assert res.binary_score == "no"
